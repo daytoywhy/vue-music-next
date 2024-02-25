@@ -1,11 +1,11 @@
 <template>
-  <MyHeader />
-  <tab />
+  <m-header></m-header>
+  <tab></tab>
   <router-view></router-view>
 </template>
 
 <script setup>
+import MHeader from '@/components/header/header.vue'
+import Tab from '@/components/tab/tab.vue'
 import { RouterView } from 'vue-router'
-import MyHeader from '@/components/header/header.vue'
-import tab from '@/components/tab/tab.vue'
 </script>

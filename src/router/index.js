@@ -20,9 +20,8 @@ const routes = [
   {
     path: '/search',
     component: () => import('@/views/search.vue')
-  },
+  }
 ]
-
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes

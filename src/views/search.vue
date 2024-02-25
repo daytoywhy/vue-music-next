@@ -1,5 +1,5 @@
 <template>
-  <div class="search">搜索页面</div>
+  <div class="top-list">排行榜</div>
 </template>
 
 <script>

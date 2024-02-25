@@ -1,14 +1,14 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
 import App from './App.vue'
 import router from './router'
-
-import '@/assets/sass/index.scss'
+import '@/assets/scss/index.scss'
+import lazyPlugin from 'vue3-lazy'
+import createLoadingLikeDirective from '@/components/base/loading/directive.js'
 
 const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+app.use(router).use(lazyPlugin,{
+  loading: require('@/assets/images/default.png')
+}).directive('loading', createLoadingLikeDirective)
 
 app.mount('#app')
