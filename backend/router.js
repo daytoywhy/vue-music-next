@@ -128,7 +128,6 @@ function registerRouter(app) {
 // 注册推荐列表接口路由
 function registerRecommend(app) {
   app.get('/api/getRecommend', (req, res) => {
-    console.log('进来');
     // 第三方服务接口 url
     const url = 'https://u.y.qq.com/cgi-bin/musics.fcg'
 
@@ -398,9 +397,10 @@ function registerSongsUrl(app) {
 
       const sign = getSecuritySign(JSON.stringify(data))
       const url = `https://u.y.qq.com/cgi-bin/musics.fcg?_=${getRandomVal()}&sign=${sign}`
+      
 
       // 发送 post 请求
-      return post(url, data).then((response) => {
+      return post(url, JSON.stringify(data)).then((response) => {
         const data = response.data
         if (data.code === ERR_OK) {
           const midInfo = data.req_0.data.midurlinfo

@@ -1,12 +1,18 @@
 <template>
   <div class="singer" v-loading="loading">
-    <index-list :data="singers"></index-list>
+    <index-list :data="singers" @select="selectSinger"></index-list>
+    <router-view v-slot="{ Component }">
+      <transition appear="" name="slider">
+        <component :is="Component" :data="selectedSinger"></component>
+      </transition>
+    </router-view>
   </div>
 </template>
 
 <script>
 import { getSingerList } from '@/service/singer.js'
 import IndexList from '@/components/index-list/index.vue'
+import storage from 'good-storage'
 export default {
   name: 'singer',
   components:{
@@ -14,7 +20,8 @@ export default {
   },
   data(){
     return{
-      singers:[]
+      singers:[],
+      selectedSinger: null
     }
   },
   computed:{
@@ -25,6 +32,15 @@ export default {
   async created(){
     const result = await getSingerList()
     this.singers = result.singers
+  },
+  methods:{
+    selectSinger(singer){
+      this.selectedSinger = singer
+      this.$router.push({
+        path: `/singer/${singer.mid}`
+      })
+      storage.session.set('__singer__',singer)
+    },
   }
 }
 </script>

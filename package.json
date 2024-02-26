@@ -14,6 +14,7 @@
     "axios": "^1.6.7",
     "better-scroll": "^2.5.1",
     "express": "^4.18.2",
+    "good-storage": "^1.1.1",
     "js-base64": "^3.7.7",
     "pinyin": "^2.9.1",
     "sass": "^1.71.1",
