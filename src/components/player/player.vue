@@ -164,7 +164,8 @@ export default {
       error,
       ready,
       pause,
-      getFavoriteIcon, toggleFavorite
+      getFavoriteIcon,
+      toggleFavorite
     }
   }
 }

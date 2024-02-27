@@ -5,24 +5,24 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import { ref } from 'vue'
 import useScroll from './use-scroll.js'
 export default {
-  name:'scroll',
-  props:{
-    click:{
-      type:Boolean,
-      default:true
+  name: 'scroll',
+  props: {
+    click: {
+      type: Boolean,
+      default: true
     },
-    probeType:{
-      type:Number,
-      default:0
+    probeType: {
+      type: Number,
+      default: 0
     }
   },
-  emits:['scroll'],
-  setup(props,{emit}){
+  emits: ['scroll'],
+  setup(props, { emit }) {
     const rootRef = ref(null)
-    const { scroll } = useScroll(rootRef,props,emit)
+    const { scroll } = useScroll(rootRef, props, emit)
     return {
       rootRef,
       scroll
@@ -31,6 +31,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

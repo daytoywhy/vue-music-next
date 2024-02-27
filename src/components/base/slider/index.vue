@@ -8,13 +8,13 @@
       </div>
     </div>
     <div class="dots-wrapper">
-        <span
-          class="dot"
-          v-for="(item, index) in slidersList"
-          :key="item.id"
-          :class="{ 'active': currentPageIndex === index }"
-        ></span>
-      </div>
+      <span
+        class="dot"
+        v-for="(item, index) in slidersList"
+        :key="item.id"
+        :class="{ active: currentPageIndex === index }"
+      ></span>
+    </div>
   </div>
 </template>
 

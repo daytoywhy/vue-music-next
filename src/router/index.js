@@ -12,12 +12,12 @@ const routes = [
   {
     path: '/singer',
     component: () => import('@/views/singer.vue'),
-    children:[
+    children: [
       {
-        path:':id',
+        path: ':id',
         component: () => import('@/views/singer-detail.vue')
       }
-    ],
+    ]
   },
   {
     path: '/top-list',

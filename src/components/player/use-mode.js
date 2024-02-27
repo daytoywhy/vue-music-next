@@ -1,7 +1,7 @@
 import { PLAY_MODE } from '@/assets/js/constant'
-import { computed , ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
-export default function useMode(){
+export default function useMode() {
   const store = useStore()
   const playMode = computed(() => store.state.playMode)
   const modeIcon = computed(() => {
@@ -12,11 +12,10 @@ export default function useMode(){
         ? 'icon-random'
         : 'icon-loop'
   })
-  function changeMode(){
+  function changeMode() {
     const playModeVal = playMode.value
     const mode = (playModeVal + 1) % 3
     store.dispatch('changeMode', mode)
-
   }
   return {
     modeIcon,

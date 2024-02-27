@@ -8,8 +8,12 @@ import createLoadingLikeDirective from '@/components/base/loading/directive.js'
 
 const app = createApp(App)
 
-app.use(router).use(lazyPlugin,{
-  loading: require('@/assets/images/default.png')
-}).directive('loading', createLoadingLikeDirective).use(store)
+app
+  .use(router)
+  .use(lazyPlugin, {
+    loading: require('@/assets/images/default.png')
+  })
+  .directive('loading', createLoadingLikeDirective)
+  .use(store)
 
 app.mount('#app')

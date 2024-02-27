@@ -15,41 +15,41 @@ import IndexList from '@/components/index-list/index.vue'
 import storage from 'good-storage'
 export default {
   name: 'singer',
-  components:{
+  components: {
     IndexList
   },
-  data(){
-    return{
-      singers:[],
+  data() {
+    return {
+      singers: [],
       selectedSinger: null
     }
   },
-  computed:{
-    loading(){
+  computed: {
+    loading() {
       return !this.singers.length
     }
   },
-  async created(){
+  async created() {
     const result = await getSingerList()
     this.singers = result.singers
   },
-  methods:{
-    selectSinger(singer){
+  methods: {
+    selectSinger(singer) {
       this.selectedSinger = singer
       this.$router.push({
         path: `/singer/${singer.mid}`
       })
-      storage.session.set('__singer__',singer)
-    },
+      storage.session.set('__singer__', singer)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .singer {
-    position: fixed;
-    width: 100%;
-    top: 88px;
-    bottom: 0;
-  }
-  </style>
+  position: fixed;
+  width: 100%;
+  top: 88px;
+  bottom: 0;
+}
+</style>

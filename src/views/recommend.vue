@@ -44,11 +44,11 @@ export default {
     return {
       sliders: [],
       albums: [],
-      loadingText:'努力载入中。。。。'
+      loadingText: '努力载入中。。。。'
     }
   },
   computed: {
-    loading(){
+    loading() {
       return !this.sliders.length && !this.albums.length
     }
   },
@@ -57,10 +57,8 @@ export default {
     this.sliders = result.sliders
     this.albums = result.albums
   },
-  methods:{
-    selectItem(){
-
-    }
+  methods: {
+    selectItem() {}
   }
 }
 </script>

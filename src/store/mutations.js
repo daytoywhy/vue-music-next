@@ -1,5 +1,5 @@
 const mutations = {
-  setPlayingState(state, list){
+  setPlayingState(state, list) {
     state.playing = list
   },
   setSequenceList(state, list) {
@@ -19,7 +19,7 @@ const mutations = {
   },
   setFavoriteList(state, list) {
     state.favoriteList = list
-  },
+  }
 }
 
 export default mutations
