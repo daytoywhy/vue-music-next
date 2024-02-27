@@ -12,7 +12,7 @@
       :style="bgImageStyle"
       ref="bgImage"
     >
-      <!-- <div
+      <div
         class="play-btn-wrapper"
         :style="playBtnStyle"
       >
@@ -24,7 +24,7 @@
           <i class="icon-play"></i>
           <span class="text">随机播放全部</span>
         </div>
-      </div> -->
+      </div>
       <div
         class="filter"
         :style="filterStyle"
@@ -40,6 +40,7 @@
       <div class="song-list-wrapper">
         <song-list
           :songs="songs"
+          @select="selectItem"
         ></song-list>
       </div>
     </scroll>
@@ -49,6 +50,7 @@
 <script>
 import Scroll from '@/components/base/scroll/index.vue'
 import SongList from '@/components/base/song-list/song-list.vue'
+import { mapActions } from 'vuex'
 const RESERVED_HEIGHT = 40
 export default {
   name: 'music-list',
@@ -110,6 +112,15 @@ export default {
         return {
           backdropFilter: `blur(${blur}px)`
         }
+    },
+    playBtnStyle(){
+      let display = ''
+      if(this.scrollY > this.maxTranslateY){
+        display = 'none'
+      }
+      return {
+        display
+      }
     }
   },
   mounted(){
@@ -122,7 +133,20 @@ export default {
     },
     onScroll(pos){
       this.scrollY = -pos.y
-    }
+    },
+    selectItem({song,index}){
+      this.selectPlay({
+        list: this.songs,
+        index
+      })
+    },
+    random(){
+      this.randomPlay(this.songs)
+    },
+    ...mapActions([
+      'selectPlay',
+      'randomPlay'
+    ])
   }
 }
 </script>
