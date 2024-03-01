@@ -21,6 +21,7 @@
     "pinyin": "^2.9.1",
     "sass": "^1.71.1",
     "sass-loader": "^10.1.0",
+    "throttle-debounce": "^5.0.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
     "vue3-lazy": "^1.0.0-alpha.1",

@@ -21,7 +21,7 @@
       @scroll="onScroll"
     >
       <div class="song-list-wrapper">
-        <song-list :songs="songs" @select="selectItem"></song-list>
+        <song-list :songs="songs" @select="selectItem" :rank="rank"></song-list>
       </div>
     </scroll>
   </div>
@@ -42,7 +42,8 @@ export default {
       type: Array,
       default: () => []
     },
-    loading: Boolean
+    loading: Boolean,
+    rank: Boolean
   },
   data() {
     return {
