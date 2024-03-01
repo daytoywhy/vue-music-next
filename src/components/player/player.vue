@@ -1,5 +1,12 @@
 <template>
   <div class="player" v-show="playlist.length">
+    <transition
+      name="normal"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
     <div class="normal-player" v-show="fullScreen">
       <div class="background">
         <img :src="currentSong.pic" />
@@ -81,6 +88,7 @@
         </div>
       </div>
     </div>
+    </transition>
     <mini-player :progress="progress" :toggle-play="togglePlay"></mini-player>
     <audio
       ref="audioRef"
@@ -106,6 +114,7 @@ import { PLAY_MODE } from '@/assets/js/constant.js'
 import useCd from './use-cd.js'
 import useLyric from './use-lyric.js'
 import useMiddleInteractive from './use-middle-interactive.js'
+import useAnimation from './use-animation.js'
 
 export default {
   name: 'player',
@@ -152,6 +161,8 @@ export default {
       onMiddleTouchMove,
       onMiddleTouchEnd
     } = useMiddleInteractive()
+
+    const { cdWrapperRef,enter,afterEnter,leave,afterLeave } = useAnimation()
 
     // watch
     watch(currentSong, (newSong) => {
@@ -307,7 +318,9 @@ export default {
       middleRStyle,
       onMiddleTouchStart,
       onMiddleTouchMove,
-      onMiddleTouchEnd
+      onMiddleTouchEnd,
+
+      cdWrapperRef,enter,afterEnter,leave,afterLeave 
     }
   }
 }
