@@ -7,7 +7,7 @@ const state = {
   playMode: PLAY_MODE.sequence,
   fullScreen: false,
   currentIndex: 0,
-  favoriteList: load(FAVORITE_KEY),
+  favoriteList: [],
   searchHistory: load(SEARCH_KEY),
   playHistory: []
 }

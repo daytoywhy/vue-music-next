@@ -115,6 +115,7 @@ import useCd from './use-cd.js'
 import useLyric from './use-lyric.js'
 import useMiddleInteractive from './use-middle-interactive.js'
 import useAnimation from './use-animation.js'
+import usePlayHistory from './use-play-history.js'
 
 export default {
   name: 'player',
@@ -163,12 +164,14 @@ export default {
     } = useMiddleInteractive()
 
     const { cdWrapperRef,enter,afterEnter,leave,afterLeave } = useAnimation()
+    const { savePlay } = usePlayHistory()
 
     // watch
     watch(currentSong, (newSong) => {
       if (!newSong.id || !newSong.url) {
         return
       }
+      songReady.value = false
       const audioEl = audioRef.value
       audioEl.src = newSong.url
       audioEl.play()
@@ -242,6 +245,7 @@ export default {
       if (songReady.value) return
       songReady.value = true
       playLyric()
+      savePlay(currentSong.value)
     }
     function error() {
       songReady.value = true
