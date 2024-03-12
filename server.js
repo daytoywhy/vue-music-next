@@ -7,12 +7,12 @@ const registerRouter = require('./backend/router.js')
 async function createServer(){
   const app = express()
   registerRouter(app)
-  app.listen(3000, function(err) {
+  app.listen(4000, function(err) {
     if (err) {
       console.log(err)
       return
     }
-    console.log('Listening at http://localhost:3000' + '\n')
+    console.log('Listening at http://localhost:4000' + '\n')
   })
 }
 createServer()
